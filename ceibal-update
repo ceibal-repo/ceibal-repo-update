@@ -1,0 +1,37 @@
+#!/bin/sh
+
+CUSTOM_UPDATE_DIR=/etc/ceibal-update.d
+CEIBAL_UPDATE_PKG=ceibal-update
+
+# Paquete especifico para positivos.
+if grep BGH2_Ubuntu /etc/ceibal-version > /dev/null 2>&1; then
+    CEIBAL_UPDATE_PKG=ceibal-positivo-update
+fi
+
+logger "Actualizando Ceibal."
+
+apt-get update -y
+if [ $? -ne 0 ]; then
+    logger "Error ejecutando apt-get update."
+    exit 1
+fi
+
+apt-get install -y -o Dpkg::Options::="--force-confnew" "${CEIBAL_UPDATE_PKG}"
+if [ $? -ne 0 ]; then
+    logger "Error ejecutando apt-get install."
+    exit 2
+fi
+
+if [ -d "${CUSTOM_UPDATE_DIR}" ]; then
+    for x in "${CUSTOM_UPDATE_DIR}"/*.update; do
+        if [ -x "$x" ]; then
+            "$x"
+            if [ $? -ne 0 ]; then
+                logger "Error ejecutando script de actualizacion '$x'. Ignorando y continuando."
+            fi
+        fi
+    done
+fi
+
+apt-get autoremove
+apt-get clean

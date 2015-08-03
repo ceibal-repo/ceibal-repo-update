@@ -1,0 +1,44 @@
+#!/bin/bash
+# Ejecuta el proceso de actualización de ceibal siempre y cuando
+# no haya sido ejecutado exitosamente hace menos de un día.
+
+set -u
+
+TIMESTAMP=/var/spool/ceibal-update-check/last-check
+RUN_AGAIN=/var/spool/ceibal-update-check/rerun
+RUN_FILE=/var/run/ceibal-update-check.pid
+CEIBAL_UPDATE=/usr/sbin/ceibal-update
+
+# Verificar que no se esté ejecutando el proceso de update.
+if [[ -e ${RUN_FILE} ]]; then
+    logger "ceibal-update-check ya está ejecutando."
+    exit
+fi
+
+# Indicar que el proceso de update se está ejecutando.
+echo "$BASHPID" > "${RUN_FILE}"
+trap "/bin/rm \"${RUN_FILE}\"" EXIT
+
+if [[ ! -e ${TIMESTAMP} || $(find ${TIMESTAMP} -mtime +1) ]]; then
+    # Tiempo de espera antes de intentar actualizar para distribuir los pedidos aleatoriamente
+    # durante 5 minutos.
+    WAIT_SECS=$[ ( $RANDOM % 360 )  + 1 ]
+    logger "Ejecutando ceibal-update en ${WAIT_SECS}s."
+    sleep "${WAIT_SECS}s"
+ 
+    ${CEIBAL_UPDATE}
+
+    # Si luego de ejecutar el update quedo una marca para volver a ejecutar ceibal-update,
+    # borrar la marca y re-ejecutar.
+    # Esta marca se utiliza normalmente cuando un paquete agrega una entrada en /etc/ceibal-update.d/
+    while [ -f ${RUN_AGAIN} ]; do
+        rm ${RUN_AGAIN}
+        ${CEIBAL_UPDATE}
+    done
+    
+    # Si terminó exitosamente, actualizar el timestamp.
+    if [ $? -eq 0 ]; then
+        mkdir -p $(dirname ${TIMESTAMP})
+        touch "${TIMESTAMP}"
+    fi
+fi

@@ -1,0 +1,14 @@
+# Deshabilitar instalación de paquetes de Ubuntu
+# Package: *
+# Pin: release o=Ubuntu
+# Pin-Priority: -1
+
+# Prioridad máxima a paquetes del Proyecto Ceibal
+# Permite downgrade en caso de ser necesario
+# 1002 para tener mas prioridad que 
+# /etc/apt/preferences.d/dextrose-pinning
+# instalado por ceibal-desktop. Puede pasarse
+# a 1001 una vezq que no se instale mas ese paquete.
+Package: *
+Pin: release o="Proyecto Ceibal"
+Pin-Priority: 1002

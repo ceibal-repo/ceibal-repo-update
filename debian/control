@@ -1,0 +1,14 @@
+Source: ceibal-repo-update
+Section: admin
+Priority: optional
+Maintainer: Plan Ceibal <apt@plan.ceibal.edu.uy>
+Build-Depends: debhelper (>= 9.0.0)
+Standards-Version: 3.9.5
+Vcs-Git: git://github.com/ceibal-repo/ceibal-repo-update.git
+Vcs-Browser: https://github.com/ceibal-repo/ceibal-repo-update/
+
+Package: ceibal-repo-update
+Architecture: all
+Depends: ${misc:Depends}, wget, apt
+Description: Repositorio APT Ceibal - Actualización.
+ Configura e instala las claves necesarias para usar el repositorio APT Ceibal.

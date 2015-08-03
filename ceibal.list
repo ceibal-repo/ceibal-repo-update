@@ -1,0 +1,2 @@
+deb http://apt.ceibal.edu.uy/ubuntu/ //CODENAME// main
+deb-src http://apt.ceibal.edu.uy/ubuntu/ //CODENAME// main
