@@ -1,5 +1,5 @@
-ceibal-repo-update (0.1) UNRELEASED; urgency=medium
+ceibal-repo-update (0.1) tatu; urgency=medium
 
   * Initial commit.
 
- -- Plan Ceibal <apt@plan.ceibal.edu.uy>  Mon, 3 Aug 2015 21:09:07 -0300
+ -- Plan Ceibal <apt@plan.ceibal.edu.uy>  Tue, 04 Aug 2015 01:05:22 -0300
