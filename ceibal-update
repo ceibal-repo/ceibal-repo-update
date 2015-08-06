@@ -33,5 +33,4 @@ if [ -d "${CUSTOM_UPDATE_DIR}" ]; then
     done
 fi
 
-apt-get autoremove
 apt-get clean
