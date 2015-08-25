@@ -1,10 +1,4 @@
-ceibal-repo-update (0.2) tatu; urgency=medium
-
-  * No ejecutar autoremove. 
-
- -- Plan Ceibal <apt@plan.ceibal.edu.uy>  Wed, 05 Aug 2015 22:35:21 -0300
-
-ceibal-repo-update (0.1) tatu; urgency=medium
+ceibal-repo-update (0.1) tero; urgency=medium
 
   * Initial commit.
 
