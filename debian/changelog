@@ -1,3 +1,9 @@
+ceibal-repo-update (0.3~precise) tatu; urgency=medium
+
+  * No usar un paquete especifico para positivo. 
+
+ -- Plan Ceibal <apt@plan.ceibal.edu.uy>  Wed, 26 Aug 2015 15:00:06 -0300
+
 ceibal-repo-update (0.2) tatu; urgency=medium
 
   * No ejecutar autoremove. 
