@@ -4,9 +4,9 @@ CUSTOM_UPDATE_DIR=/etc/ceibal-update.d
 CEIBAL_UPDATE_PKG=ceibal-update
 
 # Paquete especifico para positivos.
-if grep BGH2_Ubuntu /etc/ceibal-version > /dev/null 2>&1; then
-    CEIBAL_UPDATE_PKG=ceibal-positivo-update
-fi
+#if grep BGH2_Ubuntu /etc/ceibal-version > /dev/null 2>&1; then
+#    CEIBAL_UPDATE_PKG=ceibal-positivo-update
+#fi
 
 logger "Actualizando Ceibal."
 
