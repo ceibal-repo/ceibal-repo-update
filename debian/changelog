@@ -1,3 +1,9 @@
+ceibal-repo-update (0.3) tero; urgency=medium
+
+  * No instalar si ya esta configurado por defecto en sources.list.
+
+ -- Plan Ceibal <apt@plan.ceibal.edu.uy>  Sun, 20 Sep 2015 19:39:54 -0300
+
 ceibal-repo-update (0.2~trusty) tero; urgency=medium
 
   * No usar paquete especifico para positivo.
