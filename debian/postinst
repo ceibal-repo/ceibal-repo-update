@@ -38,8 +38,13 @@ case "$1" in
             
             esac
             if [ "${CODENAME}" != "" ]; then
-                cp /usr/share/doc/ceibal-repo-update/ceibal.list /etc/apt/sources.list.d/ceibal.list
-                sed -i -e "s,//CODENAME//,${CODENAME}," "/etc/apt/sources.list.d/ceibal.list"
+                # Verificar que el repositorio de Ceibal no este ya configurado como 
+                # repositorio por defecto en sources.list, como ocurre al instalar
+                # desde una imagen de Ceibal.
+                if grep -r ${CODENAME} /etc/apt/sources.list > /dev/null 2>&1; then
+                     cp /usr/share/doc/ceibal-repo-update/ceibal.list /etc/apt/sources.list.d/ceibal.list
+                     sed -i -e "s,//CODENAME//,${CODENAME}," "/etc/apt/sources.list.d/ceibal.list"
+                fi
             fi
         fi
     fi
