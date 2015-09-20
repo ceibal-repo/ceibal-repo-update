@@ -4,8 +4,8 @@ Priority: optional
 Maintainer: Plan Ceibal <apt@plan.ceibal.edu.uy>
 Build-Depends: debhelper (>= 9.0.0)
 Standards-Version: 3.9.5
-Vcs-Git: git://github.com/ceibal-repo/ceibal-repo-update.git
-Vcs-Browser: https://github.com/ceibal-repo/ceibal-repo-update/
+Vcs-Git: http://bitbucket.org/ceibaldd/ceibal-repo-update.git
+Vcs-Browser: https://bitbucket.org/ceibaldd/ceibal-repo-update/
 
 Package: ceibal-repo-update
 Architecture: all
